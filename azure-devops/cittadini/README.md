@@ -14,13 +14,13 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module___devops_v0__"></a> [\_\_devops\_v0\_\_](#module\_\_\_devops\_v0\_\_) | git::https://github.com/pagopa/azuredevops-tf-modules.git | 7a19400902abf7f58d1af6cb7e34ef83dba5cf68 |
-| <a name="module___v3__"></a> [\_\_v3\_\_](#module\_\_\_v3\_\_) | git::https://github.com/pagopa/terraform-azurerm-v3.git | fdb0738ca6a652df3ff161c9cb5be92f7728ed9b |
+| <a name="module___v3__"></a> [\_\_v3\_\_](#module\_\_\_v3\_\_) | git::https://github.com/pagopa/terraform-azurerm-v3.git | fc90227d77e86531ad7a8889bdbc2c406f12c66a |
 | <a name="module_arc_dev_secrets"></a> [arc\_dev\_secrets](#module\_arc\_dev\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
 | <a name="module_cittadini_be_deploy"></a> [cittadini\_be\_deploy](#module\_cittadini\_be\_deploy) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_generic | n/a |
 | <a name="module_cittadini_fe_deploy"></a> [cittadini\_fe\_deploy](#module\_cittadini\_fe\_deploy) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_generic | n/a |
 | <a name="module_dev_tls_cert_service_conn"></a> [dev\_tls\_cert\_service\_conn](#module\_dev\_tls\_cert\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
 | <a name="module_letsencrypt_dev"></a> [letsencrypt\_dev](#module\_letsencrypt\_dev) | ./.terraform/modules/__v3__/letsencrypt_credential | n/a |
-| <a name="module_tlscert_citizien_internal_dev_cittadini_p4pa_pagopa_it_cert_az"></a> [tlscert\_citizien\_internal\_dev\_cittadini\_p4pa\_pagopa\_it\_cert\_az](#module\_tlscert\_citizien\_internal\_dev\_cittadini\_p4pa\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
+| <a name="module_tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it_cert_az"></a> [tlscert\_citizen\_internal\_dev\_cittadini\_p4pa\_pagopa\_it\_cert\_az](#module\_tlscert\_citizen\_internal\_dev\_cittadini\_p4pa\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
 
 ## Resources
 
@@ -45,7 +45,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_cittadini_be"></a> [cittadini\_be](#input\_cittadini\_be) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "enable_code_review": true,<br>    "enable_deploy": true,<br>    "path": "cittadini\\be"<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/main",<br>    "name": "pagopa-arc-be",<br>    "organization": "pagopa",<br>    "pipelines_path": ".devops",<br>    "yml_prefix_name": null<br>  }<br>}</pre> | no |
 | <a name="input_cittadini_fe"></a> [cittadini\_fe](#input\_cittadini\_fe) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "path": "cittadini\\fe"<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/main",<br>    "name": "pagopa-arc-fe",<br>    "organization": "pagopa",<br>    "pipelines_path": ".devops",<br>    "yml_prefix_name": null<br>  }<br>}</pre> | no |
-| <a name="input_tlscert_citizien_internal_dev_cittadini_p4pa_pagopa_it"></a> [tlscert\_citizien\_internal\_dev\_cittadini\_p4pa\_pagopa\_it](#input\_tlscert\_citizien\_internal\_dev\_cittadini\_p4pa\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "citizien.internal",<br>    "dns_zone_name": "dev.cittadini-p4pa.pagopa.it",<br>    "dns_zone_resource_group": "arc-d-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\DEV",<br>    "variables": {<br>      "CERT_NAME_EXPIRE_SECONDS": "2592000",<br>      "KEY_VAULT_NAME": "arc-d-itn-cittadini-kv"<br>    },<br>    "variables_secret": {}<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/master",<br>    "name": "le-azure-acme-tiny",<br>    "organization": "pagopa",<br>    "pipelines_path": "."<br>  }<br>}</pre> | no |
+| <a name="input_tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it"></a> [tlscert\_citizen\_internal\_dev\_cittadini\_p4pa\_pagopa\_it](#input\_tlscert\_citizen\_internal\_dev\_cittadini\_p4pa\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "citizen.internal",<br>    "dns_zone_name": "dev.cittadini-p4pa.pagopa.it",<br>    "dns_zone_resource_group": "arc-d-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\DEV",<br>    "variables": {<br>      "CERT_NAME_EXPIRE_SECONDS": "2592000",<br>      "KEY_VAULT_NAME": "arc-d-itn-cittadini-kv"<br>    },<br>    "variables_secret": {}<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/master",<br>    "name": "le-azure-acme-tiny",<br>    "organization": "pagopa",<br>    "pipelines_path": "."<br>  }<br>}</pre> | no |
 
 ## Outputs
 
