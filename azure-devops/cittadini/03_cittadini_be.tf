@@ -2,7 +2,7 @@ variable "cittadini_be" {
   default = {
     repository = {
       organization    = "pagopa"
-      name            = "pagopa-arc-be"
+      name            = "arc-be"
       branch_name     = "refs/heads/main"
       pipelines_path  = ".devops"
       yml_prefix_name = null
