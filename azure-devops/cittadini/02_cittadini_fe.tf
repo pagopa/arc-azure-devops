@@ -23,6 +23,7 @@ locals {
     DEV_CDN_ENDPOINT         = local.dev_cdn_endpoint
     DEV_CDN_PROFILE          = local.dev_cdn_profile
     AZURE_DEVOPS_GITHUB_RO   = data.azuredevops_serviceendpoint_github.azure_devops_github_ro.service_endpoint_name
+    DEV_AGENT_POOL           = local.dev_azdo_agent_pool
   }
 }
 
