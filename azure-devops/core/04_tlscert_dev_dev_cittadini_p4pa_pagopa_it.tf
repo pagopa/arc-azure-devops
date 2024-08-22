@@ -1,11 +1,5 @@
 variable "tlscert_dev_dev_cittadini_p4pa_pagopa_it" {
   default = {
-    repository = {
-      organization   = "pagopa"
-      name           = "le-azure-acme-tiny"
-      branch_name    = "refs/heads/master"
-      pipelines_path = "."
-    }
     pipeline = {
       enable_tls_cert         = true
       path                    = "TLS-Certificates\\DEV"
@@ -13,13 +7,9 @@ variable "tlscert_dev_dev_cittadini_p4pa_pagopa_it" {
       dns_zone_name           = "dev.cittadini-p4pa.pagopa.it"
       dns_zone_resource_group = "arc-d-itn-core-vnet-rg"
       # common variables to all pipelines
-      variables = {
-        CERT_NAME_EXPIRE_SECONDS = "2592000" #30 days
-        KEY_VAULT_NAME           = "arc-d-itn-core-kv"
-      }
+      variables = {}
       # common secret variables to all pipelines
-      variables_secret = {
-      }
+      variables_secret = {}
     }
   }
 }
@@ -46,7 +36,7 @@ module "tlscert_dev_dev_cittadini_p4pa_pagopa_it_cert_az" {
   }
 
   project_id = local.devops_project_id
-  repository = var.tlscert_dev_dev_cittadini_p4pa_pagopa_it.repository
+  repository = local.tlscert_repository
   #tfsec:ignore:GEN003
   path                         = var.tlscert_dev_dev_cittadini_p4pa_pagopa_it.pipeline.path
   github_service_connection_id = azuredevops_serviceendpoint_github.azure_devops_github_rw.id

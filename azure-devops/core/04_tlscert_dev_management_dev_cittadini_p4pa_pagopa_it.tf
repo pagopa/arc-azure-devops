@@ -1,11 +1,5 @@
 variable "tlscert_dev_management_dev_cittadini_p4pa_pagopa_it" {
   default = {
-    repository = {
-      organization   = "pagopa"
-      name           = "le-azure-acme-tiny"
-      branch_name    = "refs/heads/master"
-      pipelines_path = "."
-    }
     pipeline = {
       enable_tls_cert         = true
       path                    = "TLS-Certificates\\DEV"
@@ -37,7 +31,7 @@ locals {
   }
 }
 
-module "tlscert_dev_management_dev_platform_pagopa_it_cert_az" {
+module "tlscert_dev_management_dev_cittadini_p4pa_pagopa_it_cert_az" {
   source = "./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated"
   count  = var.tlscert_dev_management_dev_cittadini_p4pa_pagopa_it.pipeline.enable_tls_cert == true ? 1 : 0
 
@@ -46,7 +40,7 @@ module "tlscert_dev_management_dev_platform_pagopa_it_cert_az" {
   }
 
   project_id = local.devops_project_id
-  repository = var.tlscert_dev_management_dev_cittadini_p4pa_pagopa_it.repository
+  repository = local.tlscert_repository
   #tfsec:ignore:GEN003
   path                         = var.tlscert_dev_management_dev_cittadini_p4pa_pagopa_it.pipeline.path
   github_service_connection_id = azuredevops_serviceendpoint_github.azure_devops_github_rw.id
