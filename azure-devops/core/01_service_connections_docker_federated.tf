@@ -1,13 +1,13 @@
 # 🟢 DEV
-module "dev_azurerm_service_conn" {
-  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
+module "dev_azurecr_service_conn" {
+  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_azurecr_federated"
   providers = {
     azurerm = azurerm.dev
   }
 
   project_id = local.devops_project_id
   # #tfsec:ignore:general-secrets-no-plaintext-exposure
-  name = "${data.azurerm_subscriptions.dev.subscriptions[0].display_name}-AZURE"
+  serviceendpoint_azurecr_name_prefix = "${local.dev_docker_registry_name}-docker"
 
   tenant_id         = data.azurerm_client_config.current.tenant_id
   subscription_id   = data.azurerm_subscriptions.dev.subscriptions[0].subscription_id
@@ -15,40 +15,33 @@ module "dev_azurerm_service_conn" {
 
   location            = local.location_service_conn
   resource_group_name = local.dev_identity_rg_name
-}
 
-resource "azurerm_role_assignment" "dev_azurerm" {
-  scope                = data.azurerm_subscriptions.dev.subscriptions[0].id
-  role_definition_name = "Contributor"
-  principal_id         = module.dev_azurerm_service_conn.identity_principal_id
+  azurecr_name                = local.dev_docker_registry_name
+  azurecr_resource_group_name = local.dev_docker_registry_rg_name
 }
 
 # 🟨 UAT
-module "uat_azurerm_service_conn" {
-  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
+module "uat_azurecr_service_conn" {
+  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_azurecr_federated"
   providers = {
     azurerm = azurerm.uat
   }
 
   project_id = local.devops_project_id
   # #tfsec:ignore:general-secrets-no-plaintext-exposure
-  name = "${data.azurerm_subscriptions.uat.subscriptions[0].display_name}-AZURE"
+  serviceendpoint_azurecr_name_prefix = "${local.uat_docker_registry_name}-docker"
 
   tenant_id         = data.azurerm_client_config.current.tenant_id
   subscription_id   = data.azurerm_subscriptions.uat.subscriptions[0].subscription_id
   subscription_name = data.azurerm_subscriptions.uat.subscriptions[0].display_name
 
-  location            = local.location_service_conn
-  resource_group_name = local.uat_identity_rg_name
+  location                    = local.location_service_conn
+  resource_group_name         = local.uat_identity_rg_name
+  azurecr_name                = local.uat_docker_registry_name
+  azurecr_resource_group_name = local.uat_docker_registry_rg_name
 }
 
-resource "azurerm_role_assignment" "uat_azurerm" {
-  scope                = data.azurerm_subscriptions.uat.subscriptions[0].id
-  role_definition_name = "Contributor"
-  principal_id         = module.uat_azurerm_service_conn.identity_principal_id
-}
-
-#module "prod_azurerm_service_conn" {
+#module "prod_azurecr_service_conn" {
 #  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
 #  providers = {
 #    azurerm = azurerm.prod
@@ -67,9 +60,4 @@ resource "azurerm_role_assignment" "uat_azurerm" {
 #  check_approval_enabled = true
 #  approver_ids           = data.azuredevops_group.admins.origin_id
 #}
-#
-#resource "azurerm_role_assignment" "uat_azurerm" {
-#  scope                = data.azurerm_subscriptions.prod.subscriptions[0].id
-#  role_definition_name = "Contributor"
-#  principal_id         = module.prod_azurerm_service_conn.identity_principal_id
-#}
+
