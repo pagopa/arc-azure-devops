@@ -8,8 +8,6 @@ variable "tlscert_dev_management_dev_cittadini_p4pa_pagopa_it" {
       dns_zone_resource_group = "arc-d-itn-core-vnet-rg"
       # common variables to all pipelines
       variables = {
-        CERT_NAME_EXPIRE_SECONDS = "2592000" #30 days
-        KEY_VAULT_NAME           = "arc-d-itn-core-kv"
       }
       # common secret variables to all pipelines
       variables_secret = {
@@ -75,7 +73,7 @@ module "tlscert_dev_management_dev_cittadini_p4pa_pagopa_it_cert_az" {
   schedules = {
     days_to_build              = ["Fri"]
     schedule_only_with_changes = false
-    start_hours                = 3
+    start_hours                = 13
     start_minutes              = 0
     time_zone                  = "(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna"
     branch_filter = {
