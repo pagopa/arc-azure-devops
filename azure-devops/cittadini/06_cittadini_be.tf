@@ -66,7 +66,7 @@ module "cittadini_be_deploy" {
   )
 
   service_connection_ids_authorization = [
-    local.dev_srv_endpoint_azure_dev,
+    local.dev_srv_endpoint_azure_id,
     local.dev_srv_endpoint_azure_devops_docker_id,
     local.dev_srv_endpoint_aks_id
   ]
