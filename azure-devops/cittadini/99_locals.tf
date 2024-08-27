@@ -29,17 +29,21 @@ locals {
 
   dev_identity_rg_name = "${local.prefix}-d-${local.location_short}-core-identity-rg"
 
-  dev_storage_account_rg   = "${local.prefix}-d-${local.location_short}-${local.domain}-cdn-rg"
-  dev_storage_account_name = replace("${local.prefix}-d-${local.domain}-sa", "-", "")
-  dev_cdn_profile          = "${local.prefix}-d-${local.domain}-cdn-profile"
-  dev_cdn_endpoint         = "${local.prefix}-d-${local.domain}-cdn-endpoint"
+  dev_apim_prefix_domain     = "https://api.dev.cittadini-p4pa.pagopa.it"
+  dev_storage_account_rg     = "${local.prefix}-d-${local.location_short}-${local.domain}-cdn-rg"
+  dev_storage_account_name   = replace("${local.prefix}-d-${local.domain}-sa", "-", "")
+  dev_cdn_profile            = "${local.prefix}-d-${local.domain}-cdn-profile"
+  dev_cdn_endpoint           = "${local.prefix}-d-${local.domain}-cdn-endpoint"
+  dev_checkout_prefix_domain = "https://dev.checkout.pagopa.it"
+  dev_checkout_platform_url  = "https://api.dev.platform.pagopa.it/checkout/ec/v1"
+  dev_payment_return_url     = "https://dev.cittadini-p4pa.pagopa.it"
 
   # 🟨 UAT
   uat_subscription_name        = "uat-${local.prefix}"
   uat_domain_kv_name           = "${local.prefix}-u-${local.location_short}-${local.domain}-kv"
   uat_domain_kv_resource_group = "${local.prefix}-u-${local.location_short}-${local.domain}-sec-rg"
   uat_aks_name                 = "${local.prefix}-u-${local.location_short}-uat-aks"
-  uat_azurecr_name             = "${local.prefix}u{local.location_short}corecommonacr"
+  uat_azurecr_name             = "${local.prefix}u${local.location_short}corecommonacr"
   uat_azdo_agent_pool          = "${local.prefix}-uat-linux-app"
 
   uat_srv_endpoint_aks_name                 = "${local.prefix}-${local.domain}-aks-uat"
@@ -52,11 +56,23 @@ locals {
 
   uat_identity_rg_name = "${local.prefix}-u-${local.location_short}-core-identity-rg"
 
+  uat_apim_prefix_domain     = "https://api.uat.cittadini.pagopa.it"
+  uat_storage_account_rg     = "${local.prefix}-u-${local.location_short}-${local.domain}-cdn-rg"
+  uat_storage_account_name   = replace("${local.prefix}-u-${local.domain}-sa", "-", "")
+  uat_cdn_profile            = "${local.prefix}-u-${local.domain}-cdn-profile"
+  uat_cdn_endpoint           = "${local.prefix}-u-${local.domain}-cdn-endpoint"
+  uat_checkout_prefix_domain = "https://uat.checkout.pagopa.it"
+  uat_checkout_platform_url  = "https://api.uat.platform.pagopa.it/checkout/ec/v1"
+  uat_payment_return_url     = "https://uat.cittadini.pagopa.it/payments"
+
   # 🛑 PROD
   prod_subscription_name      = "prod-${local.prefix}"
   prod_core_kv_name           = "${local.prefix}-p-${local.location_short}-core-kv"
   prod_core_kv_resource_group = "${local.prefix}-p-${local.location_short}-core-sec-rg"
   prod_srv_endpoint_name_aks  = "${local.prefix}-${local.domain}-aks-prod"
+
+  prod_checkout_prefix_domain = "https://checkout.pagopa.it"
+  prod_checkout_platform_url  = "https://api.platform.pagopa.it/checkout/ec/v1"
 }
 
 # LOCAL TLS CERT
