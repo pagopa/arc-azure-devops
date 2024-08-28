@@ -21,6 +21,7 @@
 | <a name="module_dev_tls_cert_service_conn"></a> [dev\_tls\_cert\_service\_conn](#module\_dev\_tls\_cert\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
 | <a name="module_letsencrypt_dev"></a> [letsencrypt\_dev](#module\_letsencrypt\_dev) | ./.terraform/modules/__v3__/letsencrypt_credential | n/a |
 | <a name="module_letsencrypt_uat"></a> [letsencrypt\_uat](#module\_letsencrypt\_uat) | ./.terraform/modules/__v3__/letsencrypt_credential | n/a |
+| <a name="module_payhub_uat_secrets"></a> [payhub\_uat\_secrets](#module\_payhub\_uat\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
 | <a name="module_tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it_cert_az"></a> [tlscert\_citizen\_internal\_dev\_cittadini\_p4pa\_pagopa\_it\_cert\_az](#module\_tlscert\_citizen\_internal\_dev\_cittadini\_p4pa\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
 | <a name="module_tlscert_citizen_internal_dev_cittadini_pagopa_it_cert_az"></a> [tlscert\_citizen\_internal\_dev\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_citizen\_internal\_dev\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
 | <a name="module_tlscert_citizen_internal_uat_cittadini_pagopa_it_cert_az"></a> [tlscert\_citizen\_internal\_uat\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_citizen\_internal\_uat\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
@@ -33,6 +34,7 @@
 | Name | Type |
 |------|------|
 | [azuredevops_serviceendpoint_kubernetes.aks_dev](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/serviceendpoint_kubernetes) | resource |
+| [azuredevops_serviceendpoint_kubernetes.aks_uat](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/serviceendpoint_kubernetes) | resource |
 | [azurerm_key_vault_access_policy.dev_tls_cert_service_conn](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_access_policy) | resource |
 | [azurerm_key_vault_access_policy.uat_tls_cert_service_conn](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_access_policy) | resource |
 | [azuredevops_project.this](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/data-sources/project) | data source |
