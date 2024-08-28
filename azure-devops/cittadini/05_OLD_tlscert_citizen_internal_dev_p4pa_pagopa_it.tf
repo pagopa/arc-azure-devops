@@ -13,13 +13,9 @@ variable "tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it" {
       dns_zone_name           = "dev.cittadini-p4pa.pagopa.it"
       dns_zone_resource_group = "arc-d-itn-core-vnet-rg"
       # common variables to all pipelines
-      variables = {
-        CERT_NAME_EXPIRE_SECONDS = "2592000" #30 days
-        KEY_VAULT_NAME           = "arc-d-itn-cittadini-kv"
-      }
+      variables = {}
       # common secret variables to all pipelines
-      variables_secret = {
-      }
+      variables_secret = {}
     }
   }
 }
@@ -46,10 +42,10 @@ module "tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it_cert_az" {
   }
 
   project_id = local.devops_project_id
-  repository = var.tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it.repository
+  repository = local.tlscert_repository
   #tfsec:ignore:GEN003
   path                         = var.tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it.pipeline.path
-  github_service_connection_id = local.dev_srv_endpoint_github_id
+  github_service_connection_id = local.srv_endpoint_github_id
 
   dns_record_name                      = var.tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it.pipeline.dns_record_name
   dns_zone_name                        = var.tlscert_citizen_internal_dev_cittadini_p4pa_pagopa_it.pipeline.dns_zone_name

@@ -26,12 +26,18 @@ locals {
   cittadini_be_variables_deploy = {
     K8S_IMAGE_REPOSITORY_NAME = replace(var.cittadini_be.repository.name, "-", "")
     DEPLOY_NAMESPACE          = local.domain
+    HELM_RELEASE_NAME         = var.cittadini_be.repository.name
 
     DEV_CONTAINER_REGISTRY_SERVICE_CONN = local.dev_srv_endpoint_azure_devops_docker_name
     DEV_KUBERNETES_SERVICE_CONN         = local.dev_srv_endpoint_aks_name
     DEV_CONTAINER_REGISTRY_NAME         = local.dev_azurecr_name
     DEV_AGENT_POOL                      = local.dev_azdo_agent_pool
-    HELM_RELEASE_NAME                   = var.cittadini_be.repository.name
+
+    UAT_CONTAINER_REGISTRY_SERVICE_CONN = local.uat_srv_endpoint_azure_devops_docker_name
+    UAT_KUBERNETES_SERVICE_CONN         = local.uat_srv_endpoint_aks_name
+    UAT_CONTAINER_REGISTRY_NAME         = local.uat_azurecr_name
+    UAT_AGENT_POOL                      = local.uat_azdo_agent_pool
+
   }
 
   # deploy secrets vars
@@ -66,8 +72,11 @@ module "cittadini_be_deploy" {
   )
 
   service_connection_ids_authorization = [
-    local.dev_srv_endpoint_azure_dev,
+    local.dev_srv_endpoint_azure_id,
     local.dev_srv_endpoint_azure_devops_docker_id,
-    local.dev_srv_endpoint_aks_id
+    local.dev_srv_endpoint_aks_id,
+    local.uat_srv_endpoint_azure_id,
+    local.uat_srv_endpoint_azure_devops_docker_id,
+    local.uat_srv_endpoint_aks_id
   ]
 }

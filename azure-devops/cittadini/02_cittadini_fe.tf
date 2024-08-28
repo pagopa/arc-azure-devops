@@ -17,12 +17,27 @@ locals {
 
   # deploy vars
   cittadini_fe_variables_deploy = {
-    DEV_AZURE_SUBSCRIPTION   = data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id
-    DEV_STORAGE_ACCOUNT_RG   = local.dev_storage_account_rg
-    DEV_STORAGE_ACCOUNT_NAME = local.dev_storage_account_name
-    DEV_CDN_ENDPOINT         = local.dev_cdn_endpoint
-    DEV_CDN_PROFILE          = local.dev_cdn_profile
-    AZURE_DEVOPS_GITHUB_RO   = data.azuredevops_serviceendpoint_github.azure_devops_github_ro.service_endpoint_name
+    AZURE_DEVOPS_GITHUB_RO = data.azuredevops_serviceendpoint_github.azure_devops_github_ro.service_endpoint_name
+
+    DEV_AZURE_SUBSCRIPTION     = data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id
+    DEV_STORAGE_ACCOUNT_RG     = local.dev_storage_account_rg
+    DEV_STORAGE_ACCOUNT_NAME   = local.dev_storage_account_name
+    DEV_CDN_ENDPOINT           = local.dev_cdn_endpoint
+    DEV_CDN_PROFILE            = local.dev_cdn_profile
+    DEV_APIM_PREFIX_DOMAIN     = local.dev_apim_prefix_domain
+    DEV_CHECKOUT_PREFIX_DOMAIN = local.dev_checkout_prefix_domain
+    DEV_CHECKOUT_PLATFORM_URL  = local.dev_checkout_platform_url
+    DEV_PAYMENT_RETURN_URL     = local.dev_payment_return_url
+
+    UAT_AZURE_SUBSCRIPTION     = data.azuredevops_serviceendpoint_azurerm.uat_azurerm_service_conn.id
+    UAT_STORAGE_ACCOUNT_RG     = local.uat_storage_account_rg
+    UAT_STORAGE_ACCOUNT_NAME   = local.uat_storage_account_name
+    UAT_CDN_ENDPOINT           = local.uat_cdn_endpoint
+    UAT_CDN_PROFILE            = local.uat_cdn_profile
+    UAT_APIM_PREFIX_DOMAIN     = local.uat_apim_prefix_domain
+    UAT_CHECKOUT_PREFIX_DOMAIN = local.uat_checkout_prefix_domain
+    UAT_CHECKOUT_PLATFORM_URL  = local.uat_checkout_platform_url
+    UAT_PAYMENT_RETURN_URL     = local.uat_payment_return_url
   }
 }
 
@@ -52,6 +67,7 @@ module "cittadini_fe_deploy" {
 
   service_connection_ids_authorization = [
     data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id,
+    data.azuredevops_serviceendpoint_azurerm.uat_azurerm_service_conn.id,
     data.azuredevops_serviceendpoint_github.azure_devops_github_ro.id
   ]
 }
