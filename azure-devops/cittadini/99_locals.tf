@@ -28,14 +28,14 @@ locals {
 
   dev_identity_rg_name = "${local.prefix}-d-${local.location_short}-core-identity-rg"
 
-  dev_apim_prefix_domain     = "https://api.dev.cittadini-p4pa.pagopa.it"
+  dev_apim_prefix_domain     = "https://api.dev.cittadini.pagopa.it"
   dev_storage_account_rg     = "${local.prefix}-d-${local.location_short}-${local.domain}-cdn-rg"
   dev_storage_account_name   = replace("${local.prefix}-d-${local.domain}-sa", "-", "")
   dev_cdn_profile            = "${local.prefix}-d-${local.domain}-cdn-profile"
   dev_cdn_endpoint           = "${local.prefix}-d-${local.domain}-cdn-endpoint"
   dev_checkout_prefix_domain = "https://dev.checkout.pagopa.it"
   dev_checkout_platform_url  = "https://api.dev.platform.pagopa.it/checkout/ec/v1"
-  dev_payment_return_url     = "https://dev.cittadini-p4pa.pagopa.it"
+  dev_payment_return_url     = "https://dev.cittadini.pagopa.it"
 
   # 🟨 UAT
   uat_subscription_name        = "uat-${local.prefix}"
