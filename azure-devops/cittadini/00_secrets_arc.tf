@@ -1,3 +1,7 @@
+#
+# 🟢 DEV - SECRET
+#
+
 module "arc_dev_secrets" {
   providers = {
     azurerm = azurerm.dev
@@ -14,3 +18,28 @@ module "arc_dev_secrets" {
     "${local.dev_aks_name}-apiserver-url"
   ]
 }
+
+#
+# 🟨 UAT - SECRETS
+#
+
+module "payhub_uat_secrets" {
+  providers = {
+    azurerm = azurerm.uat
+  }
+
+  source = "./.terraform/modules/__v3__/key_vault_secrets_query"
+
+  resource_group = local.uat_domain_kv_resource_group
+  key_vault_name = local.uat_domain_kv_name
+
+  secrets = [
+    "${local.uat_aks_name}-azure-devops-sa-token",
+    "${local.uat_aks_name}-azure-devops-sa-cacrt",
+    "${local.uat_aks_name}-apiserver-url"
+  ]
+}
+
+#
+# 🛑 PROD - SECRETS
+#

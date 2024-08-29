@@ -39,7 +39,7 @@ module "tlscert_dev_dev_cittadini_pagopa_it_cert_az" {
   repository = local.tlscert_repository
   #tfsec:ignore:GEN003
   path                         = var.tlscert_dev_dev_cittadini_pagopa_it.pipeline.path
-  github_service_connection_id = azuredevops_serviceendpoint_github.azure_devops_github_rw.id
+  github_service_connection_id = local.srv_endpoint_github_id
 
   dns_record_name                      = var.tlscert_dev_dev_cittadini_pagopa_it.pipeline.dns_record_name
   dns_zone_name                        = var.tlscert_dev_dev_cittadini_pagopa_it.pipeline.dns_zone_name
@@ -49,10 +49,9 @@ module "tlscert_dev_dev_cittadini_pagopa_it_cert_az" {
   subscription_id                      = local.tlscert_dev_dev_cittadini_pagopa_it.subscription_id
   managed_identity_resource_group_name = local.dev_identity_rg_name
 
-
   location                            = local.location_service_conn
-  credential_key_vault_name           = local.dev_core_kv_name
-  credential_key_vault_resource_group = local.dev_core_kv_resource_group
+  credential_key_vault_name           = local.dev_domain_kv_name
+  credential_key_vault_resource_group = local.dev_domain_kv_resource_group
 
   variables = merge(
     var.tlscert_dev_dev_cittadini_pagopa_it.pipeline.variables,
