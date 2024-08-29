@@ -6,7 +6,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
-| <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | ~> 1.1 |
+| <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | ~> 1.2.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.85 |
 
 ## Modules
@@ -15,7 +15,6 @@
 |------|--------|---------|
 | <a name="module___devops_v0__"></a> [\_\_devops\_v0\_\_](#module\_\_\_devops\_v0\_\_) | git::https://github.com/pagopa/azuredevops-tf-modules.git | 157a2b963114da99c5e83341e98f81d3c5f47ed8 |
 | <a name="module___v3__"></a> [\_\_v3\_\_](#module\_\_\_v3\_\_) | git::https://github.com/pagopa/terraform-azurerm-v3.git | e64f39b63d46e8c05470e30eca873f44a0ab7f1b |
-| <a name="module_dev_azurecr_service_conn"></a> [dev\_azurecr\_service\_conn](#module\_dev\_azurecr\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_azurecr_federated | n/a |
 | <a name="module_dev_azurerm_service_conn"></a> [dev\_azurerm\_service\_conn](#module\_dev\_azurerm\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
 | <a name="module_dev_tls_cert_service_conn"></a> [dev\_tls\_cert\_service\_conn](#module\_dev\_tls\_cert\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
 | <a name="module_letsencrypt_dev"></a> [letsencrypt\_dev](#module\_letsencrypt\_dev) | ./.terraform/modules/__v3__/letsencrypt_credential | n/a |
@@ -33,7 +32,6 @@
 | <a name="module_tlscert_uat_management_uat_cittadini_pagopa_it_cert_az"></a> [tlscert\_uat\_management\_uat\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_uat\_management\_uat\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
 | <a name="module_tlscert_uat_portal_uat_cittadini_pagopa_it_cert_az"></a> [tlscert\_uat\_portal\_uat\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_uat\_portal\_uat\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
 | <a name="module_tlscert_uat_uat_cittadini_pagopa_it_cert_az"></a> [tlscert\_uat\_uat\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_uat\_uat\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
-| <a name="module_uat_azurecr_service_conn"></a> [uat\_azurecr\_service\_conn](#module\_uat\_azurecr\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_azurecr_federated | n/a |
 | <a name="module_uat_azurerm_service_conn"></a> [uat\_azurerm\_service\_conn](#module\_uat\_azurerm\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
 | <a name="module_uat_tls_cert_service_conn"></a> [uat\_tls\_cert\_service\_conn](#module\_uat\_tls\_cert\_service\_conn) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
 
@@ -53,6 +51,9 @@
 | [azurerm_role_assignment.dev_azurerm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.uat_azurerm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azuredevops_project.this](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/data-sources/project) | data source |
+| [azuredevops_serviceendpoint_azurecr.dev_ita_workload_identity](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/data-sources/serviceendpoint_azurecr) | data source |
+| [azuredevops_serviceendpoint_azurecr.prod_ita_workload_identity](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/data-sources/serviceendpoint_azurecr) | data source |
+| [azuredevops_serviceendpoint_azurecr.uat_ita_workload_identity](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/data-sources/serviceendpoint_azurecr) | data source |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 | [azurerm_key_vault.kv_dev](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/key_vault) | data source |
 | [azurerm_key_vault.kv_uat](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/key_vault) | data source |
@@ -64,6 +65,9 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_acr_ita_service_connection_workload_identity_dev"></a> [acr\_ita\_service\_connection\_workload\_identity\_dev](#input\_acr\_ita\_service\_connection\_workload\_identity\_dev) | The service connection ID for the ITA DEV workload identity in Azure Container Registry | `string` | `""` | no |
+| <a name="input_acr_ita_service_connection_workload_identity_prod"></a> [acr\_ita\_service\_connection\_workload\_identity\_prod](#input\_acr\_ita\_service\_connection\_workload\_identity\_prod) | The service connection ID for the ITA PROD workload identity in Azure Container Registry | `string` | `""` | no |
+| <a name="input_acr_ita_service_connection_workload_identity_uat"></a> [acr\_ita\_service\_connection\_workload\_identity\_uat](#input\_acr\_ita\_service\_connection\_workload\_identity\_uat) | The service connection ID for the ITA UAT workload identity in Azure Container Registry | `string` | `""` | no |
 | <a name="input_tlscert_dev_api_dev_cittadini_p4pa_pagopa_it"></a> [tlscert\_dev\_api\_dev\_cittadini\_p4pa\_pagopa\_it](#input\_tlscert\_dev\_api\_dev\_cittadini\_p4pa\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "api",<br>    "dns_zone_name": "dev.cittadini-p4pa.pagopa.it",<br>    "dns_zone_resource_group": "arc-d-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\DEV",<br>    "variables": {},<br>    "variables_secret": {}<br>  }<br>}</pre> | no |
 | <a name="input_tlscert_dev_api_dev_cittadini_pagopa_it"></a> [tlscert\_dev\_api\_dev\_cittadini\_pagopa\_it](#input\_tlscert\_dev\_api\_dev\_cittadini\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "api",<br>    "dns_zone_name": "dev.cittadini.pagopa.it",<br>    "dns_zone_resource_group": "arc-d-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\DEV",<br>    "variables": {},<br>    "variables_secret": {}<br>  }<br>}</pre> | no |
 | <a name="input_tlscert_dev_dev_cittadini_p4pa_pagopa_it"></a> [tlscert\_dev\_dev\_cittadini\_p4pa\_pagopa\_it](#input\_tlscert\_dev\_dev\_cittadini\_p4pa\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "",<br>    "dns_zone_name": "dev.cittadini-p4pa.pagopa.it",<br>    "dns_zone_resource_group": "arc-d-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\DEV",<br>    "variables": {},<br>    "variables_secret": {}<br>  }<br>}</pre> | no |
