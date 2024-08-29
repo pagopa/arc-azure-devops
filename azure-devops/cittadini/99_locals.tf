@@ -20,8 +20,7 @@ locals {
   dev_azdo_agent_pool          = "${local.prefix}-dev-linux-app"
 
   dev_srv_endpoint_aks_name                 = "${local.prefix}-${local.domain}-aks-dev"
-  dev_srv_endpoint_azure_devops_docker_name = "${local.prefix}-azurecr-dev"
-  dev_srv_endpoint_docker_federated_name    = "ARCDITNCORECOMMONACR-DOCKER-SERVICE-CONN"
+  dev_srv_endpoint_azure_devops_docker_name = data.azuredevops_serviceendpoint_azurecr.dev_ita_workload_identity.service_endpoint_name
   dev_srv_endpoint_aks_id                   = azuredevops_serviceendpoint_kubernetes.aks_dev.id
   dev_srv_endpoint_azure_devops_docker_id   = data.azuredevops_serviceendpoint_azurecr.dev_azureacr_service_endpoint.id
   dev_srv_endpoint_azure_id                 = data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id
@@ -47,10 +46,9 @@ locals {
   uat_azdo_agent_pool          = "${local.prefix}-uat-linux-app"
 
   uat_srv_endpoint_aks_name                 = "${local.prefix}-${local.domain}-aks-uat"
-  uat_srv_endpoint_azure_devops_docker_name = "${local.prefix}-azurecr-uat"
-  uat_srv_endpoint_docker_federated_name    = "P4PAUITNCORECOMMONACR-DOCKER-SERVICE-CONN"
+  uat_srv_endpoint_azure_devops_docker_name = data.azuredevops_serviceendpoint_azurecr.uat_ita_workload_identity.service_endpoint_name
   uat_srv_endpoint_aks_id                   = azuredevops_serviceendpoint_kubernetes.aks_dev.id
-  uat_srv_endpoint_azure_devops_docker_id   = data.azuredevops_serviceendpoint_azurecr.uat_azureacr_service_endpoint.id
+  uat_srv_endpoint_azure_devops_docker_id   = data.azuredevops_serviceendpoint_azurecr.uat_ita_workload_identity.id
   uat_srv_endpoint_azure_id                 = data.azuredevops_serviceendpoint_azurerm.uat_azurerm_service_conn.id
   uat_srv_endpoint_tls_id                   = module.uat_tls_cert_service_conn.service_endpoint_id
 
