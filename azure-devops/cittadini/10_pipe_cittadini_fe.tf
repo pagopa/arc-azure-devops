@@ -18,6 +18,7 @@ locals {
   # deploy vars
   cittadini_fe_variables_deploy = {
     AZURE_DEVOPS_GITHUB_RO = data.azuredevops_serviceendpoint_github.azure_devops_github_ro.service_endpoint_name
+    DEPLOY_PATH            = "/pagamenti"
 
     DEV_AZURE_SUBSCRIPTION     = data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id
     DEV_STORAGE_ACCOUNT_RG     = local.dev_storage_account_rg
