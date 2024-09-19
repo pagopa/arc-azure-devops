@@ -74,23 +74,25 @@ the structure is the following:
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.5 |
-| <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | <= 0.11.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.80.0 |
+| <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | ~> 1.2 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.85 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN"></a> [DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN](#module\_DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v7.0.0 |
-| <a name="module_DEV-AZURERM-IAC-PLAN-SERVICE-CONN"></a> [DEV-AZURERM-IAC-PLAN-SERVICE-CONN](#module\_DEV-AZURERM-IAC-PLAN-SERVICE-CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v7.0.0 |
-| <a name="module_UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN"></a> [UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN](#module\_UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v7.0.0 |
-| <a name="module_UAT-AZURERM-IAC-PLAN-SERVICE-CONN"></a> [UAT-AZURERM-IAC-PLAN-SERVICE-CONN](#module\_UAT-AZURERM-IAC-PLAN-SERVICE-CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v7.0.0 |
-| <a name="module_dev_secrets"></a> [dev\_secrets](#module\_dev\_secrets) | git::https://github.com/pagopa/terraform-azurerm-v3.git//key_vault_secrets_query | v7.48.0 |
-| <a name="module_iac_code_review"></a> [iac\_code\_review](#module\_iac\_code\_review) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_build_definition_code_review | v7.0.0 |
-| <a name="module_iac_deploy"></a> [iac\_deploy](#module\_iac\_deploy) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_build_definition_deploy | v7.0.0 |
-| <a name="module_prod_secrets"></a> [prod\_secrets](#module\_prod\_secrets) | git::https://github.com/pagopa/terraform-azurerm-v3.git//key_vault_secrets_query | v7.48.0 |
-| <a name="module_secrets"></a> [secrets](#module\_secrets) | git::https://github.com/pagopa/terraform-azurerm-v3.git//key_vault_secrets_query | v7.48.0 |
-| <a name="module_uat_secrets"></a> [uat\_secrets](#module\_uat\_secrets) | git::https://github.com/pagopa/terraform-azurerm-v3.git//key_vault_secrets_query | v7.48.0 |
+| <a name="module_DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN"></a> [DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN](#module\_DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
+| <a name="module_DEV-AZURERM-IAC-PLAN-SERVICE-CONN"></a> [DEV-AZURERM-IAC-PLAN-SERVICE-CONN](#module\_DEV-AZURERM-IAC-PLAN-SERVICE-CONN) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
+| <a name="module_UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN"></a> [UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN](#module\_UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
+| <a name="module_UAT-AZURERM-IAC-PLAN-SERVICE-CONN"></a> [UAT-AZURERM-IAC-PLAN-SERVICE-CONN](#module\_UAT-AZURERM-IAC-PLAN-SERVICE-CONN) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
+| <a name="module___devops_v0__"></a> [\_\_devops\_v0\_\_](#module\_\_\_devops\_v0\_\_) | git::https://github.com/pagopa/azuredevops-tf-modules.git | 7a19400902abf7f58d1af6cb7e34ef83dba5cf68 |
+| <a name="module___v3__"></a> [\_\_v3\_\_](#module\_\_\_v3\_\_) | git::https://github.com/pagopa/terraform-azurerm-v3.git | e64f39b63d46e8c05470e30eca873f44a0ab7f1b |
+| <a name="module_dev_secrets"></a> [dev\_secrets](#module\_dev\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
+| <a name="module_iac_code_review"></a> [iac\_code\_review](#module\_iac\_code\_review) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_code_review | n/a |
+| <a name="module_iac_deploy"></a> [iac\_deploy](#module\_iac\_deploy) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_deploy | n/a |
+| <a name="module_prod_secrets"></a> [prod\_secrets](#module\_prod\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
+| <a name="module_secrets"></a> [secrets](#module\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
+| <a name="module_uat_secrets"></a> [uat\_secrets](#module\_uat\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
 
 ## Resources
 
