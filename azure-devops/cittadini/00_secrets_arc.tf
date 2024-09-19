@@ -15,7 +15,9 @@ module "arc_dev_secrets" {
   secrets = [
     "${local.dev_aks_name}-azure-devops-sa-token",
     "${local.dev_aks_name}-azure-devops-sa-cacrt",
-    "${local.dev_aks_name}-apiserver-url"
+    "${local.dev_aks_name}-apiserver-url",
+    "testing-username",
+    "testing-password"
   ]
 }
 
@@ -23,7 +25,7 @@ module "arc_dev_secrets" {
 # 🟨 UAT - SECRETS
 #
 
-module "payhub_uat_secrets" {
+module "arc_uat_secrets" {
   providers = {
     azurerm = azurerm.uat
   }

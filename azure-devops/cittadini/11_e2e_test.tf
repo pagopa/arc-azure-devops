@@ -18,7 +18,10 @@ locals {
   e2e_test_variables = {}
 
   # global secrets
-  e2e_test_variables_secret = {}
+  e2e_test_variables_secret = {
+    DEV_TESTING_USERNAME = module.arc_dev_secrets.values["testing-username"].value
+    DEV_TESTING_PASSWORD = module.arc_dev_secrets.values["testing-password"].value
+  }
 }
 
 module "e2e_test" {
@@ -31,7 +34,7 @@ module "e2e_test" {
   project_id                   = local.devops_project_id
   repository                   = var.e2e_test.repository
   github_service_connection_id = data.azuredevops_serviceendpoint_github.azure_devops_github_rw.id
-  pipeline_name                = "${local.product}-e2e-test.test"
+  pipeline_name                = "${local.product}-e2e-test"
   pipeline_yml_filename        = "e2e-testing-pipeline.yml"
   path                         = var.e2e_test.pipeline.path
 
