@@ -35,7 +35,7 @@ locals {
   dev_cdn_endpoint           = "${local.prefix}-d-${local.domain}-cdn-endpoint"
   dev_checkout_prefix_domain = "https://dev.checkout.pagopa.it"
   dev_checkout_platform_url  = "https://api.dev.platform.pagopa.it/checkout/ec/v1"
-  dev_payment_return_url     = "https://dev.cittadini.pagopa.it"
+  dev_payment_return_url     = "https://dev.cittadini.pagopa.it/pagamenti"
 
   # 🟨 UAT
   uat_subscription_name        = "uat-${local.prefix}"
@@ -61,7 +61,7 @@ locals {
   uat_cdn_endpoint           = "${local.prefix}-u-${local.domain}-cdn-endpoint"
   uat_checkout_prefix_domain = "https://uat.checkout.pagopa.it"
   uat_checkout_platform_url  = "https://api.uat.platform.pagopa.it/checkout/ec/v1"
-  uat_payment_return_url     = "https://uat.cittadini.pagopa.it/payments"
+  uat_payment_return_url     = "https://uat.cittadini.pagopa.it/pagamenti"
 
   # 🛑 PROD
   prod_subscription_name      = "prod-${local.prefix}"
