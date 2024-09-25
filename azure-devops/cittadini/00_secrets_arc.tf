@@ -17,7 +17,8 @@ module "arc_dev_secrets" {
     "${local.dev_aks_name}-azure-devops-sa-cacrt",
     "${local.dev_aks_name}-apiserver-url",
     "testing-username",
-    "testing-password"
+    "testing-password",
+    "cittadini-workload-identity-client-id"
   ]
 }
 
