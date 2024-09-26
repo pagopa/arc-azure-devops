@@ -44,7 +44,7 @@ locals {
   cittadini_be_variables_secret_deploy = {
     DEV_WORK_IDENTITY_CLIENT_ID = local.dev_workload_identity_client_id
 
-    UAT_WORK_IDENTITY_CLIENT_ID = "PLACEHOLDER"
+    UAT_WORK_IDENTITY_CLIENT_ID = local.uat_workload_identity_client_id
   }
 }
 

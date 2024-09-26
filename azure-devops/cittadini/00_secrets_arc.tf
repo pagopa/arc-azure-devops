@@ -39,7 +39,8 @@ module "arc_uat_secrets" {
   secrets = [
     "${local.uat_aks_name}-azure-devops-sa-token",
     "${local.uat_aks_name}-azure-devops-sa-cacrt",
-    "${local.uat_aks_name}-apiserver-url"
+    "${local.uat_aks_name}-apiserver-url",
+    "cittadini-workload-identity-client-id"
   ]
 }
 
