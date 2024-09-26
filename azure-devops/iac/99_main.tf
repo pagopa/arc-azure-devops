@@ -1,14 +1,14 @@
 terraform {
-  required_version = ">= 1.6.5"
+  required_version = ">= 1.6.0"
   required_providers {
     azuredevops = {
       source  = "microsoft/azuredevops"
-      version = "~> 1.2"
+      version = "~> 1.3"
     }
 
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.85"
+      version = "~> 3.116"
     }
   }
   backend "azurerm" {}
@@ -19,26 +19,38 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy = false
+    }
+  }
   alias           = "dev"
-  subscription_id = module.secrets.values["DEV-SUBSCRIPTION-ID"].value
+  subscription_id = data.azurerm_subscriptions.dev.subscriptions[0].subscription_id
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy = false
+    }
+  }
   alias           = "uat"
-  subscription_id = module.secrets.values["UAT-SUBSCRIPTION-ID"].value
+  subscription_id = data.azurerm_subscriptions.uat.subscriptions[0].subscription_id
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy = false
+    }
+  }
   alias           = "prod"
-  subscription_id = module.secrets.values["PROD-SUBSCRIPTION-ID"].value
+  subscription_id = data.azurerm_subscriptions.prod.subscriptions[0].subscription_id
 }
 
 module "__v3__" {
-  # https://github.com/pagopa/terraform-azurerm-v3/releases/tag/v8.44.1
-  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git?ref=a23a38ba5f07f1afe454f17e6782f89f29956b96"
+  # https://github.com/pagopa/terraform-azurerm-v3/releases/tag/v8.44.3
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git?ref=ab2cf6a43414f2cc80a9e51332182c26ad970f72"
 }
 
 module "__devops_v0__" {
