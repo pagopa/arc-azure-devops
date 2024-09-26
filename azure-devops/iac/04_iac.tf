@@ -19,12 +19,12 @@ locals {
     TF_POOL_NAME_UAT  = "arc-uat-linux-infra",
     TF_POOL_NAME_PROD = "arc-prod-linux-infra",
     #PLAN
-    TF_AZURE_SERVICE_CONNECTION_PLAN_NAME_DEV = module.DEV-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_name,
-    TF_AZURE_SERVICE_CONNECTION_PLAN_NAME_UAT = module.UAT-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_name,
+    TF_AZURE_SERVICE_CONNECTION_PLAN_NAME_DEV = module.DEV_AZURERM_IAC_PLAN_SERVICE_CONN.service_endpoint_name,
+    TF_AZURE_SERVICE_CONNECTION_PLAN_NAME_UAT = module.UAT_AZURERM_IAC_PLAN_SERVICE_CONN.service_endpoint_name,
     #    TF_AZURE_SERVICE_CONNECTION_PLAN_NAME_PROD = module.PROD-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_name,
     #APPLY
-    TF_AZURE_SERVICE_CONNECTION_APPLY_NAME_DEV = module.DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN.service_endpoint_name,
-    TF_AZURE_SERVICE_CONNECTION_APPLY_NAME_UAT = module.UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN.service_endpoint_name,
+    TF_AZURE_SERVICE_CONNECTION_APPLY_NAME_DEV = module.DEV_AZURERM_IAC_DEPLOY_SERVICE_CONN.service_endpoint_name,
+    TF_AZURE_SERVICE_CONNECTION_APPLY_NAME_UAT = module.UAT_AZURERM_IAC_DEPLOY_SERVICE_CONN.service_endpoint_name,
     #    TF_AZURE_SERVICE_CONNECTION_APPLY_NAME_PROD = module.PROD-AZURERM-IAC-DEPLOY-SERVICE-CONN.service_endpoint_name,
   }
 
@@ -82,7 +82,7 @@ module "iac_code_review" {
 
   service_connection_ids_authorization = [
     azuredevops_serviceendpoint_github.azure-devops-github-ro.id,
-    module.DEV-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_id,
+    module.DEV_AZURERM_IAC_PLAN_SERVICE_CONN.service_endpoint_id,
     #    module.UAT-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_id,
     #    module.PROD-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_id,
   ]
@@ -131,12 +131,12 @@ module "iac_deploy" {
 
   service_connection_ids_authorization = [
     azuredevops_serviceendpoint_github.azure-devops-github-ro.id,
-    module.DEV-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_id,
-    module.UAT-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_id,
+    module.DEV_AZURERM_IAC_PLAN_SERVICE_CONN.service_endpoint_id,
+    module.UAT_AZURERM_IAC_PLAN_SERVICE_CONN.service_endpoint_id,
     #    module.PROD-AZURERM-IAC-PLAN-SERVICE-CONN.service_endpoint_id,
 
-    module.DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN.service_endpoint_id,
-    module.UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN.service_endpoint_id,
+    module.DEV_AZURERM_IAC_DEPLOY_SERVICE_CONN.service_endpoint_id,
+    module.UAT_AZURERM_IAC_DEPLOY_SERVICE_CONN.service_endpoint_id,
     #    module.PROD-AZURERM-IAC-DEPLOY-SERVICE-CONN.service_endpoint_id,
   ]
 }

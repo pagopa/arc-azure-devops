@@ -2,7 +2,7 @@
 # ⛩ Service connections
 #
 
-module "DEV-AZURERM-IAC-PLAN-SERVICE-CONN" {
+module "DEV_AZURERM_IAC_PLAN_SERVICE_CONN" {
   depends_on = [data.azuredevops_project.project]
   source     = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
   providers = {
@@ -26,14 +26,14 @@ resource "azurerm_role_assignment" "dev_plan_permissions" {
 
   scope                = data.azurerm_subscriptions.dev.subscriptions[0].id
   role_definition_name = "ARC Platform Dev IaC Reader"
-  principal_id         = module.DEV-AZURERM-IAC-PLAN-SERVICE-CONN.identity_principal_id
+  principal_id         = module.DEV_AZURERM_IAC_PLAN_SERVICE_CONN.identity_principal_id
 }
 
 #
 # UAT
 #
 
-module "UAT-AZURERM-IAC-PLAN-SERVICE-CONN" {
+module "UAT_AZURERM_IAC_PLAN_SERVICE_CONN" {
   depends_on = [data.azuredevops_project.project]
   source     = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
   providers = {
@@ -56,7 +56,7 @@ resource "azurerm_role_assignment" "uat_plan_permissions" {
 
   scope                = data.azurerm_subscriptions.uat.subscriptions[0].id
   role_definition_name = "ARC Platform Uat IaC Reader"
-  principal_id         = module.UAT-AZURERM-IAC-PLAN-SERVICE-CONN.identity_principal_id
+  principal_id         = module.UAT_AZURERM_IAC_PLAN_SERVICE_CONN.identity_principal_id
 }
 #
 ##

@@ -2,7 +2,7 @@
 # ⛩ Service connections
 #
 
-module "DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN" {
+module "DEV_AZURERM_IAC_DEPLOY_SERVICE_CONN" {
   depends_on = [data.azuredevops_project.project]
   source     = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
   providers = {
@@ -24,14 +24,14 @@ module "DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN" {
 resource "azurerm_role_assignment" "dev_apply_permissions" {
   scope                = data.azurerm_subscriptions.dev.subscriptions[0].id
   role_definition_name = "Contributor"
-  principal_id         = module.DEV-AZURERM-IAC-DEPLOY-SERVICE-CONN.identity_principal_id
+  principal_id         = module.DEV_AZURERM_IAC_DEPLOY_SERVICE_CONN.identity_principal_id
 }
 
 #
 # UAT
 #
 
-module "UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN" {
+module "UAT_AZURERM_IAC_DEPLOY_SERVICE_CONN" {
   depends_on = [data.azuredevops_project.project]
   source     = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
   providers = {
@@ -53,7 +53,7 @@ module "UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN" {
 resource "azurerm_role_assignment" "uat_apply_permissions" {
   scope                = data.azurerm_subscriptions.uat.subscriptions[0].id
   role_definition_name = "Contributor"
-  principal_id         = module.UAT-AZURERM-IAC-DEPLOY-SERVICE-CONN.identity_principal_id
+  principal_id         = module.UAT_AZURERM_IAC_DEPLOY_SERVICE_CONN.identity_principal_id
 }
 #
 ##
