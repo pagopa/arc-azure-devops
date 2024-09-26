@@ -26,7 +26,8 @@ locals {
   dev_srv_endpoint_azure_id                 = data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id
   dev_srv_endpoint_tls_id                   = module.dev_tls_cert_service_conn.service_endpoint_id
 
-  dev_identity_rg_name = "${local.prefix}-d-${local.location_short}-core-identity-rg"
+  dev_identity_rg_name            = "${local.prefix}-d-${local.location_short}-core-identity-rg"
+  dev_workload_identity_client_id = module.arc_dev_secrets.values["cittadini-workload-identity-client-id"].value
 
   dev_apim_prefix_domain     = "https://api.dev.cittadini.pagopa.it"
   dev_storage_account_rg     = "${local.prefix}-d-${local.location_short}-${local.domain}-cdn-rg"
@@ -52,7 +53,8 @@ locals {
   uat_srv_endpoint_azure_id                 = data.azuredevops_serviceendpoint_azurerm.uat_azurerm_service_conn.id
   uat_srv_endpoint_tls_id                   = module.uat_tls_cert_service_conn.service_endpoint_id
 
-  uat_identity_rg_name = "${local.prefix}-u-${local.location_short}-core-identity-rg"
+  uat_identity_rg_name            = "${local.prefix}-u-${local.location_short}-core-identity-rg"
+  uat_workload_identity_client_id = module.arc_uat_secrets.values["cittadini-workload-identity-client-id"].value
 
   uat_apim_prefix_domain     = "https://api.uat.cittadini.pagopa.it"
   uat_storage_account_rg     = "${local.prefix}-u-${local.location_short}-${local.domain}-cdn-rg"
