@@ -3,8 +3,7 @@
 #
 
 module "DEV_AZURERM_IAC_PLAN_SERVICE_CONN" {
-  depends_on = [data.azuredevops_project.project]
-  source     = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
+  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
   providers = {
     azurerm = azurerm.dev
   }
@@ -34,8 +33,7 @@ resource "azurerm_role_assignment" "dev_plan_permissions" {
 #
 
 module "UAT_AZURERM_IAC_PLAN_SERVICE_CONN" {
-  depends_on = [data.azuredevops_project.project]
-  source     = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
+  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
   providers = {
     azurerm = azurerm.uat
   }
