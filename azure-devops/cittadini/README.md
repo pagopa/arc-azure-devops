@@ -8,13 +8,14 @@
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
 | <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) | ~> 1.3 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.116 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | ~> 3.2 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module___devops_v0__"></a> [\_\_devops\_v0\_\_](#module\_\_\_devops\_v0\_\_) | git::https://github.com/pagopa/azuredevops-tf-modules.git | 7e23d73d22e7b37352c25a32cc40f6f42b6569ea |
-| <a name="module___v3__"></a> [\_\_v3\_\_](#module\_\_\_v3\_\_) | git::https://github.com/pagopa/terraform-azurerm-v3.git | ab2cf6a43414f2cc80a9e51332182c26ad970f72 |
+| <a name="module___v3__"></a> [\_\_v3\_\_](#module\_\_\_v3\_\_) | git::https://github.com/pagopa/terraform-azurerm-v3.git | 6bc45a28149fdb0abdb7ae254a4264f8d521d81f |
 | <a name="module_arc_dev_secrets"></a> [arc\_dev\_secrets](#module\_arc\_dev\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
 | <a name="module_arc_uat_secrets"></a> [arc\_uat\_secrets](#module\_arc\_uat\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
 | <a name="module_cittadini_be_deploy"></a> [cittadini\_be\_deploy](#module\_cittadini\_be\_deploy) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_generic | n/a |
@@ -23,6 +24,7 @@
 | <a name="module_e2e_test"></a> [e2e\_test](#module\_e2e\_test) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_generic | n/a |
 | <a name="module_letsencrypt_dev"></a> [letsencrypt\_dev](#module\_letsencrypt\_dev) | ./.terraform/modules/__v3__/letsencrypt_credential | n/a |
 | <a name="module_letsencrypt_uat"></a> [letsencrypt\_uat](#module\_letsencrypt\_uat) | ./.terraform/modules/__v3__/letsencrypt_credential | n/a |
+| <a name="module_soak_test"></a> [soak\_test](#module\_soak\_test) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_generic | n/a |
 | <a name="module_tlscert_citizen_internal_dev_cittadini_pagopa_it_cert_az"></a> [tlscert\_citizen\_internal\_dev\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_citizen\_internal\_dev\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
 | <a name="module_tlscert_citizen_internal_uat_cittadini_pagopa_it_cert_az"></a> [tlscert\_citizen\_internal\_uat\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_citizen\_internal\_uat\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
 | <a name="module_tlscert_dev_dev_cittadini_pagopa_it_cert_az"></a> [tlscert\_dev\_dev\_cittadini\_pagopa\_it\_cert\_az](#module\_tlscert\_dev\_dev\_cittadini\_pagopa\_it\_cert\_az) | ./.terraform/modules/__devops_v0__/azuredevops_build_definition_tls_cert_federated | n/a |
@@ -64,6 +66,7 @@
 | <a name="input_cittadini_be"></a> [cittadini\_be](#input\_cittadini\_be) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "enable_code_review": true,<br>    "enable_deploy": true,<br>    "path": "cittadini\\be"<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/main",<br>    "name": "arc-be",<br>    "organization": "pagopa",<br>    "pipelines_path": ".devops",<br>    "yml_prefix_name": null<br>  }<br>}</pre> | no |
 | <a name="input_cittadini_fe"></a> [cittadini\_fe](#input\_cittadini\_fe) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "path": "cittadini\\fe"<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/main",<br>    "name": "arc-fe",<br>    "organization": "pagopa",<br>    "pipelines_path": ".devops",<br>    "yml_prefix_name": null<br>  }<br>}</pre> | no |
 | <a name="input_e2e_test"></a> [e2e\_test](#input\_e2e\_test) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "path": "cittadini\\e2e-test"<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/main",<br>    "name": "arc-fe-e2e",<br>    "organization": "pagopa",<br>    "pipelines_path": ".devops",<br>    "yml_prefix_name": null<br>  }<br>}</pre> | no |
+| <a name="input_soak_test"></a> [soak\_test](#input\_soak\_test) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "path": "cittadini\\soak-test"<br>  },<br>  "repository": {<br>    "branch_name": "refs/heads/main",<br>    "name": "arc-soak-test",<br>    "organization": "pagopa",<br>    "pipelines_path": ".devops",<br>    "yml_prefix_name": null<br>  }<br>}</pre> | no |
 | <a name="input_tlscert_citizen_internal_dev_cittadini_pagopa_it"></a> [tlscert\_citizen\_internal\_dev\_cittadini\_pagopa\_it](#input\_tlscert\_citizen\_internal\_dev\_cittadini\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "citizen.internal",<br>    "dns_zone_name": "dev.cittadini.pagopa.it",<br>    "dns_zone_resource_group": "arc-d-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\DEV",<br>    "variables": {},<br>    "variables_secret": {}<br>  }<br>}</pre> | no |
 | <a name="input_tlscert_citizen_internal_uat_cittadini_pagopa_it"></a> [tlscert\_citizen\_internal\_uat\_cittadini\_pagopa\_it](#input\_tlscert\_citizen\_internal\_uat\_cittadini\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "citizen.internal",<br>    "dns_zone_name": "uat.cittadini.pagopa.it",<br>    "dns_zone_resource_group": "arc-u-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\UAT",<br>    "variables": {},<br>    "variables_secret": {}<br>  }<br>}</pre> | no |
 | <a name="input_tlscert_dev_dev_cittadini_pagopa_it"></a> [tlscert\_dev\_dev\_cittadini\_pagopa\_it](#input\_tlscert\_dev\_dev\_cittadini\_pagopa\_it) | n/a | `map` | <pre>{<br>  "pipeline": {<br>    "dns_record_name": "",<br>    "dns_zone_name": "dev.cittadini.pagopa.it",<br>    "dns_zone_resource_group": "arc-d-itn-core-vnet-rg",<br>    "enable_tls_cert": true,<br>    "path": "TLS-Certificates\\DEV",<br>    "variables": {},<br>    "variables_secret": {}<br>  }<br>}</pre> | no |
