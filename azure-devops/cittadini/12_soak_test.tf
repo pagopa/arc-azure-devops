@@ -15,7 +15,10 @@ variable "soak_test" {
 
 locals {
   # global vars
-  soak_test_variables = {}
+  soak_test_variables = {
+    DEV_AGENT_POOL = local.dev_azdo_agent_pool
+    UAT_AGENT_POOL = local.uat_azdo_agent_pool
+  }
 
   # global secrets
   soak_test_variables_secret = {}
