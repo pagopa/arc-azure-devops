@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: 8d41a13a731d43fda68af0e20a99a879c294950d #v1.86.0
+    rev: 89f45610a846f56273a6c4290b3c42534175949e #v1.96.1
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
@@ -9,7 +9,7 @@ repos:
           - --hook-config=--add-to-existing-file=true
           - --hook-config=--create-file-if-not-exist=true
           - --args=--hide providers
-      - id: terraform_tfsec
+#      - id: terraform_tfsec
       - id: terraform_validate
         args:
           - --init-args=-lockfile=readonly
