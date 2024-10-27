@@ -82,9 +82,9 @@ the structure is the following:
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_DEV_AZURERM_IAC_DEPLOY_SERVICE_CONN"></a> [DEV\_AZURERM\_IAC\_DEPLOY\_SERVICE\_CONN](#module\_DEV\_AZURERM\_IAC\_DEPLOY\_SERVICE\_CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v9.2.1 |
-| <a name="module_DEV_AZURERM_IAC_PLAN_SERVICE_CONN"></a> [DEV\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN](#module\_DEV\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
+| <a name="module_DEV_AZURERM_IAC_PLAN_SERVICE_CONN"></a> [DEV\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN](#module\_DEV\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v9.2.1 |
 | <a name="module_UAT_AZURERM_IAC_DEPLOY_SERVICE_CONN"></a> [UAT\_AZURERM\_IAC\_DEPLOY\_SERVICE\_CONN](#module\_UAT\_AZURERM\_IAC\_DEPLOY\_SERVICE\_CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v9.2.1 |
-| <a name="module_UAT_AZURERM_IAC_PLAN_SERVICE_CONN"></a> [UAT\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN](#module\_UAT\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN) | ./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated | n/a |
+| <a name="module_UAT_AZURERM_IAC_PLAN_SERVICE_CONN"></a> [UAT\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN](#module\_UAT\_AZURERM\_IAC\_PLAN\_SERVICE\_CONN) | git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated | v9.2.1 |
 | <a name="module___devops_v0__"></a> [\_\_devops\_v0\_\_](#module\_\_\_devops\_v0\_\_) | git::https://github.com/pagopa/azuredevops-tf-modules.git | 7e23d73d22e7b37352c25a32cc40f6f42b6569ea |
 | <a name="module___v3__"></a> [\_\_v3\_\_](#module\_\_\_v3\_\_) | git::https://github.com/pagopa/terraform-azurerm-v3.git | ab2cf6a43414f2cc80a9e51332182c26ad970f72 |
 | <a name="module_dev_secrets"></a> [dev\_secrets](#module\_dev\_secrets) | ./.terraform/modules/__v3__/key_vault_secrets_query | n/a |
