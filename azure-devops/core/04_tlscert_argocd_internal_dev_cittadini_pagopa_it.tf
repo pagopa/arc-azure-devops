@@ -71,7 +71,7 @@ module "tlscert_argocd_internal_dev_cittadini_pagopa_it_cert_az" {
   ]
 
   schedules = {
-    days_to_build              = ["Wed","Fri"]
+    days_to_build              = ["Wed", "Fri"]
     schedule_only_with_changes = false
     start_hours                = 10
     start_minutes              = 0
