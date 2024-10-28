@@ -43,6 +43,10 @@ locals {
 
   prod_core_kv_name           = "${local.prefix}-p-${local.location_short}-${local.domain}-kv"
   prod_core_kv_resource_group = "${local.prefix}-p-${local.location_short}-${local.domain}-sec-rg"
+
+  prod_identity_rg_name = "${local.prefix}-p-${local.location_short}-${local.domain}-identity-rg"
+
+  prod_dns_zone_name = "cittadini.pagopa.it"
 }
 
 # LOCAL TLS CERT

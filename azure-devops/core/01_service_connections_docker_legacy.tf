@@ -1,5 +1,7 @@
 # Service connection for azure container registry
-# 🟢 DEV
+#
+# 🟢 DEV - ACR Service Connection
+#
 resource "azuredevops_serviceendpoint_azurecr" "acr_docker_registry_dev" {
   project_id     = local.devops_project_id
   resource_group = local.dev_docker_registry_rg_name
@@ -12,7 +14,9 @@ resource "azuredevops_serviceendpoint_azurecr" "acr_docker_registry_dev" {
   azurecr_subscription_id   = data.azurerm_subscriptions.dev.subscriptions[0].subscription_id
 }
 
-# 🟨 UAT
+#
+# 🟨 UAT - ACR Service Connection
+#
 resource "azuredevops_serviceendpoint_azurecr" "acr_docker_registry_uat" {
   project_id     = local.devops_project_id
   resource_group = local.uat_docker_registry_rg_name
@@ -25,7 +29,9 @@ resource "azuredevops_serviceendpoint_azurecr" "acr_docker_registry_uat" {
   azurecr_subscription_id   = data.azurerm_subscriptions.uat.subscriptions[0].subscription_id
 }
 
-# # 🛑 PROD
+#
+# 🛑 PROD - ACR Service Connection
+#
 # resource "azuredevops_serviceendpoint_azurecr" "acr_docker_registry_prod" {
 #   project_id     = local.devops_project_id
 #   resource_group = local.prod_docker_registry_rg_name

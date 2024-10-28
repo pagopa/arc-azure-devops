@@ -1,8 +1,6 @@
 #
-# ⛩ Service connection 🔐 KV@DEV 🟢
+# 🟢 DEV - TLS Service Connection
 #
-# 🟢 DEV
-#tfsec:ignore:GEN003
 module "dev_tls_cert_service_conn" {
   source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
 
@@ -39,7 +37,9 @@ resource "azurerm_key_vault_access_policy" "dev_tls_cert_service_conn" {
   certificate_permissions = ["Get", "Import"]
 }
 
-# 🟨 UAT
+#
+# 🟨 UAT - TLS Service Connection
+#
 #tfsec:ignore:GEN003
 module "uat_tls_cert_service_conn" {
   source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
@@ -73,6 +73,45 @@ resource "azurerm_key_vault_access_policy" "uat_tls_cert_service_conn" {
   key_vault_id = data.azurerm_key_vault.kv_uat.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
   object_id    = module.uat_tls_cert_service_conn.service_principal_object_id
+
+  certificate_permissions = ["Get", "Import"]
+}
+
+#
+# 🛑 PROD - TLS Service Connection
+#
+module "prod_tls_cert_service_conn" {
+  source = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
+
+  providers = {
+    azurerm = azurerm.prod
+  }
+
+  project_id = local.devops_project_id
+  #tfsec:ignore:general-secrets-no-plaintext-exposure
+  name              = "${local.prefix}-${local.domain}-p-azdo-tls-cert-kv-policy"
+  tenant_id         = data.azurerm_client_config.current.tenant_id
+  subscription_id   = data.azurerm_subscriptions.prod.subscriptions[0].subscription_id
+  subscription_name = data.azurerm_subscriptions.prod.subscriptions[0].display_name
+
+  location            = local.location_service_conn
+  resource_group_name = local.prod_identity_rg_name
+
+}
+
+data "azurerm_key_vault" "kv_prod" {
+  provider = azurerm.prod
+
+  name                = local.prod_core_kv_name
+  resource_group_name = local.prod_core_kv_resource_group
+}
+
+resource "azurerm_key_vault_access_policy" "prod_tls_cert_service_conn" {
+  provider = azurerm.prod
+
+  key_vault_id = data.azurerm_key_vault.kv_prod.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = module.prod_tls_cert_service_conn.service_principal_object_id
 
   certificate_permissions = ["Get", "Import"]
 }
