@@ -28,11 +28,10 @@ locals {
 
   # deploy vars
   arc_cittadini_aks_deploy_variables_deploy = {
-    DEV_KUBERNETES_SERVICE_CONN = azuredevops_serviceendpoint_kubernetes.aks_dev.service_endpoint_name
-    DEV_AGENT_POOL              = local.azdo_agent_pool_dev
-    ARGOCD_SERVER               = module.domain_dev_secrets.values["argocd-server"].value
-    ARGOCD_USERNAME             = module.domain_dev_secrets.values["argocd-admin-username"].value
-    ARGOCD_PASSWORD             = module.domain_dev_secrets.values["argocd-admin-password"].value
+    DEV_AGENT_POOL              = local.dev_azdo_agent_pool
+    ARGOCD_SERVER               = module.arc_dev_secrets.values["argocd-server-url"].value
+    ARGOCD_USERNAME             = module.arc_dev_secrets.values["argocd-admin-username"].value
+    ARGOCD_PASSWORD             = module.arc_dev_secrets.values["argocd-admin-password"].value
   }
 
   # deploy secrets vars
@@ -40,11 +39,11 @@ locals {
 }
 
 module "arc_cittadini_aks_deploy" {
-  source = "git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_build_definition_generic?ref=v9.2.1"
+  source = "./.terraform/modules/__devops_v0__/azuredevops_build_definition_generic"
 
-  project_id                   = data.azuredevops_project.project.project_id
+  project_id                   = data.azuredevops_project.this.project_id
   repository                   = var.arc_cittadini_aks_deploy.repository
-  github_service_connection_id = data.azuredevops_serviceendpoint_github.azure-devops-github-rw.id
+  github_service_connection_id = data.azuredevops_serviceendpoint_github.azure_devops_github_rw.id
 
   pipeline_name         = "${var.arc_cittadini_aks_deploy.pipeline.name}.deploy"
   pipeline_yml_filename = "deploy.yml"
@@ -65,8 +64,8 @@ module "arc_cittadini_aks_deploy" {
   )
 
   service_connection_ids_authorization = [
-    data.azuredevops_serviceendpoint_azurerm.azure_dev.id,
-    azuredevops_serviceendpoint_kubernetes.aks_dev.id,
+    local.dev_srv_endpoint_azure_id,
+    local.uat_srv_endpoint_azure_id,
   ]
 
 }
