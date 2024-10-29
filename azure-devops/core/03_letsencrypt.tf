@@ -1,5 +1,6 @@
-# create let's encrypt credential used to create SSL certificates
-# 🟢 DEV
+#
+# 🟢 DEV - LETSENCRYPT
+#
 module "letsencrypt_dev" {
   source = "./.terraform/modules/__v3__/letsencrypt_credential"
 
@@ -13,7 +14,9 @@ module "letsencrypt_dev" {
   subscription_name = data.azurerm_subscriptions.dev.subscriptions[0].display_name
 }
 
-# 🟨 UAT
+#
+# 🟨 UAT - LETSENCRYPT
+#
 module "letsencrypt_uat" {
   source = "./.terraform/modules/__v3__/letsencrypt_credential"
 
@@ -25,4 +28,21 @@ module "letsencrypt_uat" {
   env               = "u"
   key_vault_name    = local.uat_core_kv_name
   subscription_name = data.azurerm_subscriptions.uat.subscriptions[0].display_name
+}
+
+#
+# 🛑 PROD - LETSENCRYPT
+#
+
+module "letsencrypt_prod" {
+  source = "./.terraform/modules/__v3__/letsencrypt_credential"
+
+  providers = {
+    azurerm = azurerm.prod
+  }
+
+  prefix            = local.prefix
+  env               = "p"
+  key_vault_name    = local.prod_core_kv_name
+  subscription_name = data.azurerm_subscriptions.prod.subscriptions[0].display_name
 }
