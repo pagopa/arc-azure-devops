@@ -18,7 +18,10 @@ module "arc_dev_secrets" {
     "${local.dev_aks_name}-apiserver-url",
     "testing-username",
     "testing-password",
-    "cittadini-workload-identity-client-id"
+    "cittadini-workload-identity-client-id",
+    "argocd-admin-password",
+    "argocd-admin-username",
+    "argocd-server-url"
   ]
 }
 
@@ -40,7 +43,10 @@ module "arc_uat_secrets" {
     "${local.uat_aks_name}-azure-devops-sa-token",
     "${local.uat_aks_name}-azure-devops-sa-cacrt",
     "${local.uat_aks_name}-apiserver-url",
-    "cittadini-workload-identity-client-id"
+    "cittadini-workload-identity-client-id",
+    "argocd-admin-password",
+    "argocd-admin-username",
+    "argocd-server-url"
   ]
 }
 
