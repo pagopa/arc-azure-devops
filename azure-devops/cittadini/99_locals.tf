@@ -22,7 +22,7 @@ locals {
   dev_srv_endpoint_aks_name                 = "${local.prefix}-${local.domain}-aks-dev"
   dev_srv_endpoint_azure_devops_docker_name = data.azuredevops_serviceendpoint_azurecr.dev_ita_workload_identity.service_endpoint_name
   dev_srv_endpoint_aks_id                   = azuredevops_serviceendpoint_kubernetes.aks_dev.id
-  dev_srv_endpoint_azure_devops_docker_id   = data.azuredevops_serviceendpoint_azurecr.dev_azureacr_service_endpoint.id
+  dev_srv_endpoint_azure_devops_docker_id   = data.azuredevops_serviceendpoint_azurecr.dev_ita_workload_identity.id
   dev_srv_endpoint_azure_id                 = data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id
   dev_srv_endpoint_tls_id                   = module.dev_tls_cert_service_conn.service_endpoint_id
 
