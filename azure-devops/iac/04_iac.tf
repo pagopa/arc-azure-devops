@@ -9,7 +9,6 @@ locals {
   code_review_domains = [for d in local.domains : d if d.code_review == true]
   deploy_domains      = [for d in local.domains : d if d.deploy == true]
 
-
   base_iac_variables = {
     tf_aks_dev_name  = local.aks_dev_platform_name
     tf_aks_uat_name  = local.aks_uat_platform_name
