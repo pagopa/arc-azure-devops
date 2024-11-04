@@ -74,9 +74,6 @@ module "arc_cittadini_aks_deploy" {
   )
 
   service_connection_ids_authorization = [
-    local.dev_srv_endpoint_azure_id,
-    local.uat_srv_endpoint_azure_id,
-    local.prod_srv_endpoint_azure_id,
   ]
 
 }
