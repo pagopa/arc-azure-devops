@@ -29,9 +29,19 @@ locals {
   # deploy vars
   arc_cittadini_aks_deploy_variables_deploy = {
     DEV_AGENT_POOL  = local.dev_azdo_agent_pool
-    ARGOCD_SERVER   = module.arc_dev_secrets.values["argocd-server-url"].value
-    ARGOCD_USERNAME = module.arc_dev_secrets.values["argocd-admin-username"].value
-    ARGOCD_PASSWORD = module.arc_dev_secrets.values["argocd-admin-password"].value
+    DEV_ARGOCD_SERVER   = module.arc_dev_secrets.values["argocd-server-url"].value
+    DEV_ARGOCD_USERNAME = module.arc_dev_secrets.values["argocd-admin-username"].value
+    DEV_ARGOCD_PASSWORD = module.arc_dev_secrets.values["argocd-admin-password"].value
+
+    UAT_AGENT_POOL  = local.uat_azdo_agent_pool
+    UAT_ARGOCD_SERVER   = module.arc_uat_secrets.values["argocd-server-url"].value
+    UAT_ARGOCD_USERNAME = module.arc_uat_secrets.values["argocd-admin-username"].value
+    UAT_ARGOCD_PASSWORD = module.arc_uat_secrets.values["argocd-admin-password"].value
+
+    PROD_AGENT_POOL  = local.prod_azdo_agent_pool
+    PROD_ARGOCD_SERVER   = module.arc_prod_secrets.values["argocd-server-url"].value
+    PROD_ARGOCD_USERNAME = module.arc_prod_secrets.values["argocd-admin-username"].value
+    PROD_ARGOCD_PASSWORD = module.arc_prod_secrets.values["argocd-admin-password"].value
   }
 
   # deploy secrets vars
@@ -46,7 +56,7 @@ module "arc_cittadini_aks_deploy" {
   github_service_connection_id = data.azuredevops_serviceendpoint_github.azure_devops_github_rw.id
 
   pipeline_name         = "${var.arc_cittadini_aks_deploy.pipeline.name}.deploy"
-  pipeline_yml_filename = "deploy.yml"
+  pipeline_yml_filename = "deploy-argocd-apps.yml"
   path                  = var.arc_cittadini_aks_deploy.pipeline.path
 
   pull_request_trigger_enabled     = true
@@ -66,6 +76,7 @@ module "arc_cittadini_aks_deploy" {
   service_connection_ids_authorization = [
     local.dev_srv_endpoint_azure_id,
     local.uat_srv_endpoint_azure_id,
+    local.prod_srv_endpoint_azure_id,
   ]
 
 }
