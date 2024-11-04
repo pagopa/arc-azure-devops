@@ -24,7 +24,7 @@ locals {
   domains = [
     {
       name : "cittadini",
-      envs : ["d", "u"],
+      envs : ["d", "u", "p"],
       kv_name : "arc-%s-itn-cittadini-kv",
       rg_name : "arc-%s-itn-cittadini-sec-rg",
       code_review : true,
@@ -37,7 +37,7 @@ locals {
     },
     {
       name : "networking",
-      envs : ["d", "u"],
+      envs : ["d", "u", "p"],
       kv_name : "",
       rg_name : "",
       code_review : true,
@@ -50,7 +50,7 @@ locals {
     },
     {
       name : "security",
-      envs : ["d", "u"],
+      envs : ["d", "u", "p"],
       kv_name : "",
       rg_name : "",
       code_review : true,
@@ -63,7 +63,7 @@ locals {
     },
     {
       name : "packer",
-      envs : ["d", "u"],
+      envs : ["d", "u", "p"],
       kv_name : "",
       rg_name : "",
       code_review : true,
@@ -76,7 +76,7 @@ locals {
     },
     {
       name : "core",
-      envs : ["d", "u"],
+      envs : ["d", "u", "p"],
       kv_name : "",
       rg_name : "",
       code_review : true,
