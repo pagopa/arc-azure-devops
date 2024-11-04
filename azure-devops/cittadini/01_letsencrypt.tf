@@ -33,3 +33,16 @@ module "letsencrypt_uat" {
 #
 # 🛑 PROD - LETSENCRYPT
 #
+
+module "letsencrypt_prod" {
+  source = "./.terraform/modules/__v3__/letsencrypt_credential"
+
+  providers = {
+    azurerm = azurerm.prod
+  }
+
+  prefix            = local.prefix
+  env               = "p"
+  key_vault_name    = local.prod_domain_kv_name
+  subscription_name = data.azurerm_subscriptions.prod.subscriptions[0].display_name
+}

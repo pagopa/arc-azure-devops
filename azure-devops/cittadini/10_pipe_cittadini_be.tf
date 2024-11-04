@@ -38,6 +38,11 @@ locals {
     UAT_CONTAINER_REGISTRY_NAME         = local.uat_azurecr_name
     UAT_AGENT_POOL                      = local.uat_azdo_agent_pool
 
+    PROD_CONTAINER_REGISTRY_SERVICE_CONN = local.prod_srv_endpoint_azure_devops_docker_name
+    PROD_KUBERNETES_SERVICE_CONN         = local.prod_srv_endpoint_aks_name
+    PROD_CONTAINER_REGISTRY_NAME         = local.prod_azurecr_name
+    PROD_AGENT_POOL                      = local.prod_azdo_agent_pool
+
   }
 
   # deploy secrets vars
@@ -45,6 +50,8 @@ locals {
     DEV_WORK_IDENTITY_CLIENT_ID = local.dev_workload_identity_client_id
 
     UAT_WORK_IDENTITY_CLIENT_ID = local.uat_workload_identity_client_id
+
+    PROD_WORK_IDENTITY_CLIENT_ID = local.prod_workload_identity_client_id
   }
 }
 
@@ -81,6 +88,9 @@ module "cittadini_be_deploy" {
     local.dev_srv_endpoint_aks_id,
     local.uat_srv_endpoint_azure_id,
     local.uat_srv_endpoint_azure_devops_docker_id,
-    local.uat_srv_endpoint_aks_id
+    local.uat_srv_endpoint_aks_id,
+    local.prod_srv_endpoint_azure_id,
+    local.prod_srv_endpoint_azure_devops_docker_id,
+    local.prod_srv_endpoint_aks_id
   ]
 }

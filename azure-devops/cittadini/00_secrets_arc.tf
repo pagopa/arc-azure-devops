@@ -53,3 +53,24 @@ module "arc_uat_secrets" {
 #
 # 🛑 PROD - SECRETS
 #
+
+module "arc_prod_secrets" {
+  providers = {
+    azurerm = azurerm.prod
+  }
+
+  source = "./.terraform/modules/__v3__/key_vault_secrets_query"
+
+  resource_group = local.prod_domain_kv_resource_group
+  key_vault_name = local.prod_domain_kv_name
+
+  secrets = [
+    "${local.prod_aks_name}-azure-devops-sa-token",
+    "${local.prod_aks_name}-azure-devops-sa-cacrt",
+    "${local.prod_aks_name}-apiserver-url",
+    "cittadini-workload-identity-client-id",
+    "argocd-admin-password",
+    "argocd-admin-username",
+    "argocd-server-url"
+  ]
+}

@@ -39,6 +39,16 @@ locals {
     UAT_CHECKOUT_PREFIX_DOMAIN = local.uat_checkout_prefix_domain
     UAT_CHECKOUT_PLATFORM_URL  = local.uat_checkout_platform_url
     UAT_PAYMENT_RETURN_URL     = local.uat_payment_return_url
+
+    PROD_AZURE_SUBSCRIPTION     = data.azuredevops_serviceendpoint_azurerm.prod_azurerm_service_conn.id
+    PROD_STORAGE_ACCOUNT_RG     = local.prod_storage_account_rg
+    PROD_STORAGE_ACCOUNT_NAME   = local.prod_storage_account_name
+    PROD_CDN_ENDPOINT           = local.prod_cdn_endpoint
+    PROD_CDN_PROFILE            = local.prod_cdn_profile
+    PROD_APIM_PREFIX_DOMAIN     = local.prod_apim_prefix_domain
+    PROD_CHECKOUT_PREFIX_DOMAIN = local.prod_checkout_prefix_domain
+    PROD_CHECKOUT_PLATFORM_URL  = local.prod_checkout_platform_url
+    PROD_PAYMENT_RETURN_URL     = local.prod_payment_return_url
   }
 }
 
@@ -69,6 +79,7 @@ module "cittadini_fe_deploy" {
   service_connection_ids_authorization = [
     data.azuredevops_serviceendpoint_azurerm.dev_azurerm_service_conn.id,
     data.azuredevops_serviceendpoint_azurerm.uat_azurerm_service_conn.id,
+    data.azuredevops_serviceendpoint_azurerm.prod_azurerm_service_conn.id,
     data.azuredevops_serviceendpoint_github.azure_devops_github_ro.id
   ]
 }
