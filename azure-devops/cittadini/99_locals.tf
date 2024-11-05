@@ -66,13 +66,36 @@ locals {
   uat_payment_return_url     = "https://uat.cittadini.pagopa.it/pagamenti"
 
   # 🛑 PROD
-  prod_subscription_name      = "prod-${local.prefix}"
+  prod_subscription_name        = "prod-${local.prefix}"
+  prod_domain_kv_name           = "${local.prefix}-p-${local.location_short}-${local.domain}-kv"
+  prod_domain_kv_resource_group = "${local.prefix}-p-${local.location_short}-${local.domain}-sec-rg"
+  prod_aks_name                 = "${local.prefix}-p-${local.location_short}-prod-aks"
+  prod_azurecr_name             = "${local.prefix}p${local.location_short}corecommonacr"
+  prod_azdo_agent_pool          = "${local.prefix}-prod-linux-app"
+
+  prod_srv_endpoint_aks_name                 = "${local.prefix}-${local.domain}-aks-prod"
+  prod_srv_endpoint_azure_devops_docker_name = data.azuredevops_serviceendpoint_azurecr.prod_ita_workload_identity.service_endpoint_name
+  prod_srv_endpoint_aks_id                   = azuredevops_serviceendpoint_kubernetes.aks_dev.id
+  prod_srv_endpoint_azure_devops_docker_id   = data.azuredevops_serviceendpoint_azurecr.prod_ita_workload_identity.id
+  prod_srv_endpoint_azure_id                 = data.azuredevops_serviceendpoint_azurerm.prod_azurerm_service_conn.id
+  prod_srv_endpoint_tls_id                   = module.prod_tls_cert_service_conn.service_endpoint_id
+
+  prod_identity_rg_name            = "${local.prefix}-p-${local.location_short}-core-identity-rg"
+  prod_workload_identity_client_id = module.arc_prod_secrets.values["cittadini-workload-identity-client-id"].value
+
   prod_core_kv_name           = "${local.prefix}-p-${local.location_short}-core-kv"
   prod_core_kv_resource_group = "${local.prefix}-p-${local.location_short}-core-sec-rg"
   prod_srv_endpoint_name_aks  = "${local.prefix}-${local.domain}-aks-prod"
 
+
+  prod_apim_prefix_domain     = "https://api.cittadini.pagopa.it"
+  prod_storage_account_rg     = "${local.prefix}-p-${local.location_short}-${local.domain}-cdn-rg"
+  prod_storage_account_name   = replace("${local.prefix}-p-${local.domain}-sa", "-", "")
+  prod_cdn_profile            = "${local.prefix}-p-${local.domain}-cdn-profile"
+  prod_cdn_endpoint           = "${local.prefix}-p-${local.domain}-cdn-endpoint"
   prod_checkout_prefix_domain = "https://checkout.pagopa.it"
   prod_checkout_platform_url  = "https://api.platform.pagopa.it/checkout/ec/v1"
+  prod_payment_return_url     = "https://cittadini.pagopa.it/pagamenti"
 }
 
 # LOCAL TLS CERT
