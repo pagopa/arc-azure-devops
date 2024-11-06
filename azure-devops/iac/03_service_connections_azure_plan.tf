@@ -62,7 +62,7 @@ resource "azurerm_role_assignment" "uat_plan_permissions" {
 #
 module "PROD_AZURERM_IAC_PLAN_SERVICE_CONN" {
   depends_on = [data.azuredevops_project.project]
-  source     = "./.terraform/modules/__devops_v0__/azuredevops_serviceendpoint_federated"
+  source     = "git::https://github.com/pagopa/azuredevops-tf-modules.git//azuredevops_serviceendpoint_federated?ref=v9.2.1"
   providers = {
     azurerm = azurerm.prod
   }
