@@ -9,8 +9,8 @@ variable "cittadini_be" {
     }
     pipeline = {
       path               = "cittadini\\be"
-      enable_code_review = true
-      enable_deploy      = true
+      enable_code_review = false
+      enable_deploy      = false
     }
   }
 }
