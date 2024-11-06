@@ -79,9 +79,9 @@ module "PROD_AZURERM_IAC_PLAN_SERVICE_CONN" {
   resource_group_name = local.prod_identity_rg_name
 }
 
-resource "azurerm_role_assignment" "prod_plan_permissions" {
-
-  scope                = data.azurerm_subscriptions.prod.subscriptions[0].id
-  role_definition_name = "ARC Platform Prod IaC Reader"
-  principal_id         = module.PROD_AZURERM_IAC_PLAN_SERVICE_CONN.identity_principal_id
-}
+#resource "azurerm_role_assignment" "prod_plan_permissions" {
+#
+#  scope                = data.azurerm_subscriptions.prod.subscriptions[0].id
+#  role_definition_name = "ARC Platform Prod IaC Reader"
+#  principal_id         = module.PROD_AZURERM_IAC_PLAN_SERVICE_CONN.identity_principal_id
+#}
