@@ -28,17 +28,17 @@ locals {
 
   # deploy vars
   arc_cittadini_aks_deploy_variables_deploy = {
-    DEV_AGENT_POOL  = local.dev_azdo_agent_pool
+    DEV_AGENT_POOL      = local.dev_azdo_agent_pool
     DEV_ARGOCD_SERVER   = module.arc_dev_secrets.values["argocd-server-url"].value
     DEV_ARGOCD_USERNAME = module.arc_dev_secrets.values["argocd-admin-username"].value
     DEV_ARGOCD_PASSWORD = module.arc_dev_secrets.values["argocd-admin-password"].value
 
-    UAT_AGENT_POOL  = local.uat_azdo_agent_pool
+    UAT_AGENT_POOL      = local.uat_azdo_agent_pool
     UAT_ARGOCD_SERVER   = module.arc_uat_secrets.values["argocd-server-url"].value
     UAT_ARGOCD_USERNAME = module.arc_uat_secrets.values["argocd-admin-username"].value
     UAT_ARGOCD_PASSWORD = module.arc_uat_secrets.values["argocd-admin-password"].value
 
-    PROD_AGENT_POOL  = local.prod_azdo_agent_pool
+    PROD_AGENT_POOL      = local.prod_azdo_agent_pool
     PROD_ARGOCD_SERVER   = module.arc_prod_secrets.values["argocd-server-url"].value
     PROD_ARGOCD_USERNAME = module.arc_prod_secrets.values["argocd-admin-username"].value
     PROD_ARGOCD_PASSWORD = module.arc_prod_secrets.values["argocd-admin-password"].value
