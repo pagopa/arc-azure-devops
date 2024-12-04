@@ -86,6 +86,21 @@ locals {
       repository : {
         yml_prefix_name : "core"
       }
+    },
+    {
+      name : "cittadini-api-spec",
+      envs : ["d", "u", "p"],
+      kv_name : "",
+      rg_name : "",
+      code_review : true,
+      deploy : true,
+      pipeline_prefix : "cittadini-api-spec",
+      pipeline_path : "cittadini-api-spec",
+      repository : {
+        name = "arc-infra-api-spec"
+        yml_prefix_name : "cittadini"
+        branch_name = "refs/heads/main"
+      }
     }
   ]
 

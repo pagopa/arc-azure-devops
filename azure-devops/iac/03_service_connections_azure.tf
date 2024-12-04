@@ -82,3 +82,17 @@ resource "azurerm_role_assignment" "prod_apply_permissions" {
   role_definition_name = "Contributor"
   principal_id         = module.PROD_AZURERM_IAC_DEPLOY_SERVICE_CONN.identity_principal_id
 }
+
+resource "azuredevops_check_approval" "check_approval_srv_deploy_prod" {
+  project_id           = data.azuredevops_project.project.id
+  target_resource_id   = module.PROD_AZURERM_IAC_DEPLOY_SERVICE_CONN.service_endpoint_id
+  target_resource_type = "endpoint"
+
+  requester_can_approve = true
+
+  approvers = [
+    data.azuredevops_group.admin.origin_id
+  ]
+
+  timeout = 60
+}

@@ -11,4 +11,7 @@ data "azurerm_subscriptions" "prod" {
   display_name_prefix = local.prod_subscription_name
 }
 
-
+data "azuredevops_group" "admin" {
+  project_id = data.azuredevops_project.project.id
+  name       = "admins"
+}
