@@ -73,7 +73,7 @@ module "prod_azurerm_service_conn" {
   location               = local.location_service_conn
   resource_group_name    = local.prod_identity_rg_name
   check_approval_enabled = true
-  approver_ids           = [data.azuredevops_group.admins.origin_id]
+  approver_ids           = [data.azuredevops_group.admin.origin_id]
 }
 
 resource "azurerm_role_assignment" "prod_azurerm" {

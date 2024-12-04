@@ -75,6 +75,9 @@ module "PROD_AZURERM_IAC_DEPLOY_SERVICE_CONN" {
 
   location            = var.location
   resource_group_name = local.prod_identity_rg_name
+
+  check_approval_enabled = true
+  approver_ids           = [data.azuredevops_group.admin.origin_id]
 }
 
 resource "azurerm_role_assignment" "prod_apply_permissions" {
